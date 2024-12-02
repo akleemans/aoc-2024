@@ -11,10 +11,9 @@ All code in Python/[Codon](https://docs.exaloop.io/codon).
 
 | Day   | Python | Codon |
 |-------|--------|-------|
-| Day 1 | 64.5ms | 7.4ms |
-| Day 2 |        |       |
+| Day 1 | 22.5ms | 2.5ms |
+| Day 2 | 23.0ms | 4.2ms |
 | Day 3 |        |       |
-
 
 ## Notes
 
