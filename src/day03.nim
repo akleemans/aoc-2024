@@ -1,8 +1,7 @@
-import times
 import math
 import strutils
 import sequtils
-
+import benchy
 
 let test_data = """xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))""".splitLines()
 let test_data2 = """xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))""".splitLines()
@@ -23,7 +22,7 @@ proc part1(data: seq[string]): int =
                 if a.len > 3 or b.len > 3 or not a.all(isDigit) or not b.all(isDigit):
                     continue
                 mult_result += parseInt(a) * parseInt(b)
-    echo "part1: ", mult_result
+    # echo "part1: ", mult_result
     return mult_result
 
 proc part2(data: seq[string]): int =
@@ -47,25 +46,21 @@ proc part2(data: seq[string]): int =
                     continue
                 if enabled:
                     mult_result += parseInt(a) * parseInt(b)    
-    echo "part2: ", mult_result
+    # echo "part2: ", mult_result
     return mult_result
 
 proc main() =
     var data = strip(readFile("../inputs/day03.txt")).splitLines()
-    let time = cpuTime()
 
     let part1_test_result = part1(test_data)
-    assert part1_test_result == 161
+    doAssert part1_test_result == 161
     let part1_result = part1(data)
-    assert part1_result == 167650499
+    doAssert part1_result == 167650499
 
     let part2_test_result = part2(test_data2)
-    assert part2_test_result == 48
+    doAssert part2_test_result == 48
     let part2_result = part2(data)
-    assert part2_result == 95846796
+    doAssert part2_result == 95846796
 
-    let micros = round((cpuTime() - time) * 1_000, 1)
-    echo "Time taken: ", micros, "ms"
-
-main()
-
+timeIt "day03":
+    main()

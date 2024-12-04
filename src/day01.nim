@@ -1,8 +1,8 @@
-import times
 import math
 import strutils
 import algorithm
 import sequtils
+import benchy
 
 let test_data = """3   4
 4   3
@@ -43,20 +43,16 @@ proc part2(data: seq[string]): int =
 
 proc main() =
     var data = strip(readFile("../inputs/day01.txt")).splitLines()
-    let time = cpuTime()
 
     let part1_test_result = part1(test_data)
-    assert part1_test_result == 11
+    doAssert part1_test_result == 11
     let part1_result = part1(data)
-    assert part1_result == 1388114
+    doAssert part1_result == 1388114
 
     let part2_test_result = part2(test_data)
-    assert part2_test_result == 31
+    doAssert part2_test_result == 31
     let part2_result = part2(data)
-    assert part2_result == 23529853
+    doAssert part2_result == 23529853
 
-    let micros = round((cpuTime() - time) * 1_000_000, 1)
-    echo "Time taken: ", micros, "μs"
-
-main()
-
+timeIt "day02":
+    main()
