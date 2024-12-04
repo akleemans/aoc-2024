@@ -21,3 +21,6 @@ venv.bak/
 # Binaries
 *.bin
 **/run.build/
+
+src/*
+!src/*.nim
