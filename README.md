@@ -16,7 +16,7 @@ Code in Nim 2.2.0.
 | Day 2 | 1.98ms |
 | Day 3 | 2.24ms |
 | Day 4 | 276μs  |
-| Day 5 |        |
+| Day 5 | 22.5ms |
 | Day 6 |        |
 | Day 7 |        |
 | Day 8 |        |
