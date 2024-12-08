@@ -18,7 +18,7 @@ Code in Nim 2.2.0.
 | Day 4  | 276μs  |
 | Day 5  | 22.5ms |
 | Day 6  | 1.37s  |
-| Day 7  |        |
+| Day 7  | 21.3ms |
 | Day 8  | 7.8ms  |
 | Day 9  |        |
 | Day 10 |        |
@@ -27,5 +27,8 @@ Code in Nim 2.2.0.
 
 ## Notes
 
-- Day 6, pt.2
-- Day 7: recursion
+### Day 6
+Map. Slow part 2?
+
+### Day 7
+Recursion!
