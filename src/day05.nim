@@ -34,7 +34,7 @@ let test_data = """47|53
 97,13,75,29,47""".splitLines()
 
 proc processInput(data: seq[string]): (Table[string, bool], seq[seq[int]]) =
-    var rules = initTable[string, bool]() # seq[(int, int)] = @[]
+    var rules = initTable[string, bool]()
     var update_start = 0
     for i in 0..data.len - 1:
         let line = data[i]

@@ -95,7 +95,7 @@ proc part2(data: seq[string]): int =
 
     var count = 0
     for blockerPos in visited:
-        var visited2: seq[((int, int), (int, int))] = @[]
+        var visited2 = initTable[((int, int), (int, int)), bool]()
         currentDir = (-1, 0) # starting upwards
         currentPos = startPos
         while true:
@@ -106,7 +106,7 @@ proc part2(data: seq[string]): int =
 
             # Check if obstacle
             if data[nextPos[0]][nextPos[1]] == '#' or nextPos == blockerPos:
-                visited2.add((currentPos, currentDir))
+                visited2[(currentPos, currentDir)] = true
                 let nextTryPos = currentPos + rotate(currentDir)
                 if data[nextTryPos[0]][nextTryPos[1]] == '#' or nextTryPos == blockerPos:
                     currentDir = rotate(rotate(currentDir))
@@ -117,7 +117,7 @@ proc part2(data: seq[string]): int =
                 currentPos = nextPos
 
             # Add to visited
-            if (currentPos, currentDir) in visited2:
+            if visited2.hasKey((currentPos, currentDir)):
                 count += 1
                 break
 
