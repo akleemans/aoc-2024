@@ -35,18 +35,21 @@ jumped into coding. There's an edge case (only in part 2) if you insert a blocke
 isn't possible, then the guard will have to walk back from where they came from.
 
 Guard approaching:
+
 ```
 ..->...#
 ......0.
 ```
 
 Hitting the given wall, unable to turn (or turning 90°, then right again).
+
 ```
 .....->#
 ......0.
 ```
 
 Guard going back.
+
 ```
 .....<-#
 ......0.
@@ -64,7 +67,7 @@ With part 2 it took me a while to realize what
 
 ```
 7290: 6 8 6 15
-            * (revert: divide by 15)
+           * (revert: divide by 15)
 486: 6 8  6
         || (revert: remove last 6 from 486)
 48: 6 8
