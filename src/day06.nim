@@ -3,6 +3,7 @@ import strutils
 import benchy
 import tables
 import sequtils
+import sets
 
 let testData = """....#.....
 .........#
@@ -94,7 +95,6 @@ proc part2(data: seq[string]): int =
 
     var count = 0
     for blockerPos in visited:
-        # echo "Trying ", blockerPos
         var visited2: seq[((int, int), (int, int))] = @[]
         currentDir = (-1, 0) # starting upwards
         currentPos = startPos
@@ -119,67 +119,11 @@ proc part2(data: seq[string]): int =
             # Add to visited
             if (currentPos, currentDir) in visited2:
                 count += 1
-                break                
+                break
 
     # echo "count: ", count
     return count
 
-
-# proc part2_old(data: seq[string]): int =
-#     let w = data[0].len
-#     let h = data.len
-#     var startPos = (0, 0)
-#     for row in 0..h-1:
-#         for col in 0..w-1:
-#             if data[row][col] == '^':
-#                 startPos = (row, col)
-
-#     var currentDir = (-1, 0) # starting upwards
-#     var currentPos = startPos
-#     var visited: seq[((int, int), (int, int))] = @[(currentPos, currentDir)]
-#     var candidates: seq[(int, int)] = @[]
-#     while true:
-#         # Check next pos
-#         let nextPos = currentPos + currentDir
-#         if not inBounds(nextPos, w, h):
-#             break
-
-#         # Check if obstacle
-#         if data[nextPos[0]][nextPos[1]] == '#':
-#             echo "hit an obstacle at ", nextPos
-#             currentDir = rotate(currentDir)
-#             currentPos = currentPos + currentDir
-#         else:
-#             let blockerPos = nextPos
-#             # Check to the right if visited, may indicate a loop
-#             var currentDir2 = rotate(currentDir)
-#             var currentPos2 = currentPos
-#             var candidates2: seq[((int, int), (int, int))] = @[]
-#             while true:
-#                 let nextPos2 = currentPos2 + currentDir2
-#                 if not inBounds(nextPos2, w, h):
-#                     break
-
-#                 if data[nextPos2[0]][nextPos2[1]] == '#' or nextPos2 == blockerPos:
-#                     currentDir2 = rotate(currentDir2)
-#                     currentPos2 = currentPos2 + currentDir2
-#                 else:
-#                     currentPos2 = nextPos2
-            
-#                 if (currentPos2, currentDir2) in candidates2:
-#                     if blockerPos notin candidates:
-#                         candidates.add(blockerPos)
-#                     break
-#                 else:
-#                     candidates2.add((currentPos2, currentDir2))
-
-#             currentPos = nextPos
-
-#         # Add to visited
-#         visited.add((currentPos, currentDir))
-
-#     echo "candidates: ", candidates.len
-#     return candidates.len
 
 proc main() =
     var data = strip(readFile("../inputs/day06.txt")).splitLines()
