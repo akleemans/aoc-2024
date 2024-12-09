@@ -21,7 +21,7 @@ Code in Nim 2.2.0.
 | Day 6  | 350ms  |
 | Day 7  | 2.87ms |
 | Day 8  | 955μs  |
-| Day 9  |        |
+| Day 9  | 169ms  |
 | Day 10 |        |
 | Day 11 |        |
 | Day 12 |        |
@@ -75,3 +75,10 @@ With part 2 it took me a while to realize what
 6: 6 ✅
 ```
 
+### Day 9
+
+Defragmentation of a disk, what a fun challenge. With a simple list (Nim: `sequence`) of integers (representing
+fileIds), I could keep track of which file was placed where.
+
+With looping around a bit (and getting rid of _off by one_-errors), it was possible fairly easy to check if the length
+of a file would allow it to be placed somewhere else.
