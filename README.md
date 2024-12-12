@@ -23,8 +23,14 @@ Code in Nim 2.2.0.
 | Day 8  | 955μs  |
 | Day 9  | 169ms  |
 | Day 10 | 1.66ms |
-| Day 11 |        |
+| Day 11 | 7μs    |
 | Day 12 |        |
+| Day 13 |        |
+| Day 14 |        |
+| Day 15 |        |
+| Day 16 |        |
+| Day 17 |        |
+| Day 18 |        |
 
 ## Notes
 
@@ -90,3 +96,9 @@ of [2023 Day 23](https://adventofcode.com/2023/day/23).
 I first thought of using recursion, but after looking at the actual input decided to use a simple queue, so to start
 exploring at `0`s and expanding the possible paths by processing queue items. This turned out to be a very good
 preparation for part 2 which only required slight changes.
+
+## Day 11
+
+Expanding stones - part 1 was implemented quickly with just following the rules, but it became clear soon enough that
+this approach would not work for part 2 (even with a compiled language). After thinking it through some more I gave
+Memoization a try, which worked surprisingly well.
