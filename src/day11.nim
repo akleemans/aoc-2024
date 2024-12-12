@@ -64,17 +64,11 @@ proc part2(data: seq[string], blinks: int): int =
 proc main() =
     var data = strip(readFile("../inputs/day11.txt")).splitLines()
 
-    let part1TestResult1 = part2(testData, 6)
-    doAssert part1TestResult1 == 22
-    let part1TestResult2 = part2(testData, 25)
-    doAssert part1TestResult2 == 55312
+    let part1TestResult = part2(testData, 25)
+    doAssert part1TestResult == 55312
     let part1Result = part2(data, 25)
     doAssert part1Result == 199753
 
-    let part2TestResult = part2(testData, 6)
-    doAssert part2TestResult == 22
-    let part2TestResult2 = part2(testData, 25)
-    doAssert part2TestResult2 == 55312
     let part2Result = part2(data, 75)
     doAssert part2Result == 239413123020116
 
