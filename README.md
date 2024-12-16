@@ -25,7 +25,7 @@ Code in Nim 2.2.0.
 | Day 10 | 1.66ms |
 | Day 11 | 7μs    |
 | Day 12 | 27.4ms |
-| Day 13 |        |
+| Day 13 | 1.07s  |
 | Day 14 |        |
 | Day 15 |        |
 | Day 16 | 78.7ms |
@@ -102,6 +102,13 @@ preparation for part 2 which only required slight changes.
 Expanding stones - part 1 was implemented quickly with just following the rules, but it became clear soon enough that
 this approach would not work for part 2 (even with a compiled language). After thinking it through some more I gave
 Memoization a try, which worked surprisingly well.
+
+# Day 13
+
+Cheat day! Today when reading the problem my mind immediately jumped to equation solving, so I used
+Python/[SymPy](https://www.sympy.org/en/index.html), ignoring the "cheapest" condition. The first solution for each
+equation was already the right one, and I only found out afterwards that all "vectors" were linearly independent, so I
+got lucky.
 
 ## Day 16
 
