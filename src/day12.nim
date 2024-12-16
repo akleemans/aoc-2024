@@ -103,9 +103,9 @@ proc part2(data: seq[string]): int =
         # Reduce sides: remove horizontally & vertically
         for side in sides:
             let (a, b) = side
-            echo "side: ", side
+            # echo "side: ", side
             if ignored.hasKey(side):
-                echo "already on known side: ", side
+                # echo "already on known side: ", side
                 continue
             # Same row, vertical
             if a[0] == b[0]:
@@ -132,10 +132,10 @@ proc part2(data: seq[string]): int =
                     newSide = (newSide[0] - (0, 1), newSide[1] - (0, 1))
 
         let areaPrice = area.len * (sides.len - ignored.len)
-        echo "areaPrice:", area.len, " x ", sides.len - ignored.len, " = ", areaPrice
+        # echo "areaPrice:", area.len, " x ", sides.len - ignored.len, " = ", areaPrice
         totalPrice += areaPrice
 
-    echo "totalPrice: ", totalPrice
+    # echo "totalPrice: ", totalPrice
     return totalPrice
 
 proc main() =
@@ -151,6 +151,5 @@ proc main() =
     let part2Result = part2(data)
     doAssert part2Result == 844132
 
-main()
-#timeIt "day11":
-#    main()
+timeIt "day12":
+    main()

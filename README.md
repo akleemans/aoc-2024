@@ -24,7 +24,7 @@ Code in Nim 2.2.0.
 | Day 9  | 169ms  |
 | Day 10 | 1.66ms |
 | Day 11 | 7μs    |
-| Day 12 |        |
+| Day 12 | 27.4ms |
 | Day 13 |        |
 | Day 14 |        |
 | Day 15 |        |
@@ -102,3 +102,14 @@ preparation for part 2 which only required slight changes.
 Expanding stones - part 1 was implemented quickly with just following the rules, but it became clear soon enough that
 this approach would not work for part 2 (even with a compiled language). After thinking it through some more I gave
 Memoization a try, which worked surprisingly well.
+
+## Day 16
+
+Again a map problem, but a very fun one. Finding the shortest path quickly reminded me of last year and I started early
+with a Priority Queue, with a [heapqueue](https://nim-lang.org/docs/heapqueue.html) implementation in Nim.
+
+As it was still running to slowly, I started skipping paths in the queue that were on positions (with direction) that we
+already processed, which worked out nicely.
+Unfortunately this was not usable for Part 2, so I had to use another lookup. Starting with the whole path didn't work (
+or make sense), but keeping the lowest score for a given position+direction was the key. (If a path leading up to the
+position had a higher score, it could not be a solution.)

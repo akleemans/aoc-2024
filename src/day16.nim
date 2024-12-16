@@ -139,7 +139,7 @@ proc part2(data: seq[string], bestScore: int): int =
         let pos = currentPath.pos
         let dir = currentPath.dir
         var path = currentPath.path
-        # If there's a quicker way until here, abort
+        # If there's a quicker way until here: abort, this can't be a solution
         if seen.hasKey((pos, dir)):
             if seen[(pos, dir)] < score:
                 continue
