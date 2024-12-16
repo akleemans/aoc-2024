@@ -58,15 +58,14 @@ proc part1(data: seq[string], w: int, h: int): int =
         elif row > middleRow and col > middleCol:
             quadrants[3] += 1
 
-    #echo "quadrants: ", quadrants
     let safetyFactor = quadrants[0] * quadrants[1] * quadrants[2] * quadrants[3] 
-    echo "safetyFactor: ", safetyFactor
+    # echo "safetyFactor: ", safetyFactor
     return safetyFactor
 
 proc printField(positions: seq[(int, int)], w: int, h: int): void =
     #let grid: seq[seq[char]] = @[]
-    for row in 0..w-1:
-        for col in 0..h-1:
+    for col in 0..w-1:
+        for row in 0..h-1:
             if (row, col) in positions:
                 stdout.write("X")
             else:
@@ -74,37 +73,47 @@ proc printField(positions: seq[(int, int)], w: int, h: int): void =
         stdout.write("\n")
 
 proc part2(data: seq[string], w: int, h: int): int =
-    # TODO split into parsing and calculating
+    var positions: seq[(int, int)] = @[]
+    var velocities: seq[(int, int)] = @[]
+
+    for line in data:
+        let pr = parseInt(line.split("p=")[1].split(",")[0])
+        let pc = parseInt(line.split(",")[1].split(" ")[0])
+        let vr = parseInt(line.split("v=")[1].split(",")[0])
+        let vc = parseInt(line.split(",")[2])
+        positions.add((pr, pc))
+        velocities.add((vr, vc))
 
     var second = 0
     while true:
-        var finalPositions: seq[(int, int)] = @[]
-        for line in data:
-            let pr = parseInt(line.split("p=")[1].split(",")[0])
-            let pc = parseInt(line.split(",")[1].split(" ")[0])
-            let vr = parseInt(line.split("v=")[1].split(",")[0])
-            let vc = parseInt(line.split(",")[2])
-            var finalRow = (pr + vr * second) mod w
-            var finalCol = (pc + vc * second) mod h
-            if finalRow < 0:
-                finalRow += w
-            if finalCol < 0:
-                finalCol += h
-            finalPositions.add((finalRow, finalCol))
+        second += 1
+        #if second mod 100 == 0:
+        #    echo "second: ", second
+        # Update positions
+        for i in 0..positions.len-1:
+            let p = positions[i]
+            let v = velocities[i]
+            var row = (p[0] + v[0]) mod w
+            var col = (p[1] + v[1]) mod h
+            if row < 0:
+                row += w
+            if col < 0:
+                col += h
+            positions[i] = (row, col)
 
         var neighborCount = 0
-        for pos in finalPositions:
-            for dir in allDirsDiag:
-                if pos + dir in finalPositions:
-                    neighborCount += 1
-
-        if neighborCount > 500:
-            printField(finalPositions, w, h)
-            echo "neighborCount: ", neighborCount, ", seconds: ", second
-            break
-            # let userInput = readLine(stdin)
-        second += 1
-    return -1
+        for pos in positions:
+            var currentPos = pos
+            # Assumme multiple connected cells
+            for i in 0..6:
+                currentPos = currentPos + (0, 1)
+                if currentPos notin positions:
+                    break
+            if currentPos in positions:
+                # echo "neighborCount: ", neighborCount, ", seconds: ", second
+                printField(positions, w, h)
+                return second
+        
 
 proc main() =
     var data = strip(readFile("../inputs/day14.txt")).splitLines()
@@ -114,10 +123,8 @@ proc main() =
     let part1Result = part1(data, 101, 103)
     doAssert part1Result == 229069152
 
-    #let part2TestResult = part2(testData, 11, 7)
-    #doAssert part2TestResult == -1
     let part2Result = part2(data, 101, 103)
-    doAssert part2Result == -1
+    doAssert part2Result == 7383
 
 main()
 

@@ -26,7 +26,7 @@ Code in Nim 2.2.0.
 | Day 11 | 7μs    |
 | Day 12 | 27.4ms |
 | Day 13 | 1.07s  |
-| Day 14 |        |
+| Day 14 | 28s    |
 | Day 15 |        |
 | Day 16 | 78.7ms |
 | Day 17 |        |
@@ -103,12 +103,19 @@ Expanding stones - part 1 was implemented quickly with just following the rules,
 this approach would not work for part 2 (even with a compiled language). After thinking it through some more I gave
 Memoization a try, which worked surprisingly well.
 
-# Day 13
+## Day 13
 
 Cheat day! Today when reading the problem my mind immediately jumped to equation solving, so I used
 Python/[SymPy](https://www.sympy.org/en/index.html), ignoring the "cheapest" condition. The first solution for each
 equation was already the right one, and I only found out afterwards that all "vectors" were linearly independent, so I
 got lucky.
+
+## Day 14
+
+Wow, what a great puzzle today. I was expecting a big number of seconds in Part 2, but it was really something different
+today. Having a puzzle thrown at you which is so unclear was unexpected in AoC and really surprised me. Seeing the
+Christmas tree appear in the Console (after only considering solutions with enough neighbouring robots) was really
+satisfying.
 
 ## Day 16
 
