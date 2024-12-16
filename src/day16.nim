@@ -62,6 +62,7 @@ proc part1(data: seq[string]): int =
     let w = grid[0].len
     # printGrid(grid)
     var start = (h-2, 1)
+    var seen = initTable[((int, int), (int, int)), bool]()
 
     var queue = initHeapQueue[Path]()
     queue.push(Path(score: 0, pos: start, dir: (0, 1)))
@@ -69,10 +70,15 @@ proc part1(data: seq[string]): int =
 
     while queue.len > 0:
         let currentPath = queue.pop()
-        # echo "currentPath: ", currentPath
+        echo "currentPath: ", currentPath
         var score = currentPath.score
         let pos = currentPath.pos
         let dir = currentPath.dir
+        if seen.hasKey((pos, dir)):
+            continue
+        else:
+            seen[(pos, dir)] = true
+
         var currentPos = pos + dir
         score += 1
         while grid[currentPos[0]][currentPos[1]] != '#':
@@ -92,7 +98,7 @@ proc part1(data: seq[string]): int =
             let leftPos = currentPos + turnLeft
             if grid[leftPos[0]][leftPos[1]] != '#':
                 queue.push(Path(score: score+1000, pos: currentPos, dir: turnLeft))
-                
+
             let turnRight = turnRightMap[dir]
             let rightPos = currentPos + turnRight
             if grid[rightPos[0]][rightPos[1]] != '#':
@@ -125,7 +131,7 @@ proc main() =
     let part1TestResult = part1(testData)
     doAssert part1TestResult == 7036
     let part1Result = part1(data)
-    doAssert part1Result == -1
+    doAssert part1Result == 66404
 
     let part2TestResult = part2(testData)
     doAssert part2TestResult == -1
