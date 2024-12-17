@@ -11,6 +11,10 @@ Code in Nim 2.2.0.
 * Testing, debugging: `nim compile --run day00.nim`
 * Timing: `nim compile -d:release -d:danger day00.nim`
 
+Libraries:
+
+* `bigints`: `nimble install https://github.com/nim-lang/bigints`
+
 | Day    | Time   |
 |--------|--------|
 | Day 1  | 686μs  |
@@ -29,7 +33,7 @@ Code in Nim 2.2.0.
 | Day 14 | 28s    |
 | Day 15 |        |
 | Day 16 | 78.7ms |
-| Day 17 |        |
+| Day 17 | 1.5ms  |
 | Day 18 |        |
 
 ## Notes
@@ -127,3 +131,12 @@ already processed, which worked out nicely.
 Unfortunately this was not usable for Part 2, so I had to use another lookup. Starting with the whole path didn't work (
 or make sense), but keeping the lowest score for a given position+direction was the key. (If a path leading up to the
 position had a higher score, it could not be a solution.)
+
+## Day 17
+
+I started with an implementation in Nim but switched to Python, because I didn't want to deal with bigints.
+After fixing a `round`/`floor` error, part 1 was quick.
+
+For Part 2, after fiddling around for a bit I started outputting `a` values where the result matched the program at the
+end (instead of the start), and the ratio was almost a perfect `8`, so instead of incrementing `a` by 1 I started
+multiplying by 8, which quickly yielded the correct result.
