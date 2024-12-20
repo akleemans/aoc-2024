@@ -31,10 +31,17 @@ Libraries:
 | Day 12 | 27.4ms |
 | Day 13 | 1.07s  |
 | Day 14 | 28s    |
-| Day 15 |        |
+| Day 15 | 587μs  |
 | Day 16 | 78.7ms |
 | Day 17 | 1.5ms  |
 | Day 18 |        |
+| Day 19 |        |
+| Day 20 |        |
+| Day 21 |        |
+| Day 22 |        |
+| Day 23 |        |
+| Day 24 |        |
+| Day 25 |        |
 
 ## Notes
 
@@ -120,6 +127,41 @@ Wow, what a great puzzle today. I was expecting a big number of seconds in Part 
 today. Having a puzzle thrown at you which is so unclear was unexpected in AoC and really surprised me. Seeing the
 Christmas tree appear in the Console (after only considering solutions with enough neighbouring robots) was really
 satisfying.
+
+## Day 15
+
+Part 1 was okay, but after reading part 2 I wasn't motivated at all to solve it. The problem felt really tedious,
+especially as it could be any amount of boxes connected which have to be checked (unlike in Sokoban, where two boxes
+near each other are already a blocker), like this:
+
+```
+move: v, pos: (3, 13), map: 
+####################
+##[]..[]......[][]##
+##[]...........[].##
+##...........@[][]##
+##..........[].[].##
+##..##[]..[].[]...##
+##...[]...[]..[]..##
+##.....[]..[].[][]##
+##........[]......##
+####################
+
+move: >, pos: (4, 13), map: 
+####################
+##[]..[]......[][]##
+##[]...........[].##
+##............[][]##
+##...........@.[].##
+##..##[]..[][]....##
+##...[]...[].[]...##
+##.....[]..[].[][]##
+##........[]..[]..##
+####################
+```
+
+I only solved this part days later, iterating (and collecting) a stack of boxes, first to check if there's enough space,
+then backwards to actually move them.
 
 ## Day 16
 
