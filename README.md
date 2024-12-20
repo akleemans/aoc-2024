@@ -34,7 +34,7 @@ Libraries:
 | Day 15 | 587μs  |
 | Day 16 | 78.7ms |
 | Day 17 | 1.5ms  |
-| Day 18 |        |
+| Day 18 | 12.6ms |
 | Day 19 |        |
 | Day 20 |        |
 | Day 21 |        |
@@ -182,3 +182,8 @@ After fixing a `round`/`floor` error, part 1 was quick.
 For Part 2, after fiddling around for a bit I started outputting `a` values where the result matched the program at the
 end (instead of the start), and the ratio was almost a perfect `8`, so instead of incrementing `a` by 1 I started
 multiplying by 8, which quickly yielded the correct result.
+
+## Day 18
+
+A bit of path finding again today. After using Dijkstra for Part 1 (with Nim's heapqueue), brute forcing part 2 was a
+bit slow with the same approach. After adding a bisect function it worked out really well and quite fast.
