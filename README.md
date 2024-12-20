@@ -35,7 +35,7 @@ Libraries:
 | Day 16 | 78.7ms |
 | Day 17 | 1.5ms  |
 | Day 18 | 12.6ms |
-| Day 19 |        |
+| Day 19 | 69.8ms |
 | Day 20 |        |
 | Day 21 |        |
 | Day 22 |        |
@@ -100,7 +100,7 @@ fileIds), I could keep track of which file was placed where.
 With looping around a bit (and getting rid of _off by one_-errors), it was possible fairly easy to check if the length
 of a file would allow it to be placed somewhere else.
 
-## Day 10
+### Day 10
 
 Again a map problem today, hooray! Reading through it, it felt familiar, maybe reminding me a bit
 of [2023 Day 23](https://adventofcode.com/2023/day/23).
@@ -108,27 +108,27 @@ I first thought of using recursion, but after looking at the actual input decide
 exploring at `0`s and expanding the possible paths by processing queue items. This turned out to be a very good
 preparation for part 2 which only required slight changes.
 
-## Day 11
+### Day 11
 
 Expanding stones - part 1 was implemented quickly with just following the rules, but it became clear soon enough that
 this approach would not work for part 2 (even with a compiled language). After thinking it through some more I gave
 Memoization a try, which worked surprisingly well.
 
-## Day 13
+### Day 13
 
 Cheat day! Today when reading the problem my mind immediately jumped to equation solving, so I used
 Python/[SymPy](https://www.sympy.org/en/index.html), ignoring the "cheapest" condition. The first solution for each
 equation was already the right one, and I only found out afterwards that all "vectors" were linearly independent, so I
 got lucky.
 
-## Day 14
+### Day 14
 
 Wow, what a great puzzle today. I was expecting a big number of seconds in Part 2, but it was really something different
 today. Having a puzzle thrown at you which is so unclear was unexpected in AoC and really surprised me. Seeing the
 Christmas tree appear in the Console (after only considering solutions with enough neighbouring robots) was really
 satisfying.
 
-## Day 15
+### Day 15
 
 Part 1 was okay, but after reading part 2 I wasn't motivated at all to solve it. The problem felt really tedious,
 especially as it could be any amount of boxes connected which have to be checked (unlike in Sokoban, where two boxes
@@ -163,7 +163,7 @@ move: >, pos: (4, 13), map:
 I only solved this part days later, iterating (and collecting) a stack of boxes, first to check if there's enough space,
 then backwards to actually move them.
 
-## Day 16
+### Day 16
 
 Again a map problem, but a very fun one. Finding the shortest path quickly reminded me of last year and I started early
 with a Priority Queue, with a [heapqueue](https://nim-lang.org/docs/heapqueue.html) implementation in Nim.
@@ -174,7 +174,7 @@ Unfortunately this was not usable for Part 2, so I had to use another lookup. St
 or make sense), but keeping the lowest score for a given position+direction was the key. (If a path leading up to the
 position had a higher score, it could not be a solution.)
 
-## Day 17
+### Day 17
 
 I started with an implementation in Nim but switched to Python, because I didn't want to deal with bigints.
 After fixing a `round`/`floor` error, part 1 was quick.
@@ -183,7 +183,15 @@ For Part 2, after fiddling around for a bit I started outputting `a` values wher
 end (instead of the start), and the ratio was almost a perfect `8`, so instead of incrementing `a` by 1 I started
 multiplying by 8, which quickly yielded the correct result.
 
-## Day 18
+### Day 18
 
 A bit of path finding again today. After using Dijkstra for Part 1 (with Nim's heapqueue), brute forcing part 2 was a
 bit slow with the same approach. After adding a bisect function it worked out really well and quite fast.
+
+### Day 19
+
+As soon as reading this I knew recursion with cutting of front parts would be perfect, and it worked out even better as
+expected. It reminded me a bit of [2023 Day 13](https://adventofcode.com/2023/day/12), only simpler.
+
+For Part 2, switching the cache from bool ("have we seen this yet?") to a sum ("how many combinations are possible until
+here?") was enough.
