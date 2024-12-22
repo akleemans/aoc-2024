@@ -87,33 +87,29 @@ proc part2(data: seq[string]): int =
             let diffString = diffs.mapIt($it).join(",")
             if diffString notin gain:
                 gain[diffString] = prize
-            #else:
-            #    gain[diffString] = prize
-        # echo "adding gain: ", gain
         gainsPerBuyer.add(gain)
 
-    # Collect keys
-    var allKeys = initHashSet[string]()
-    for buyerId in 0..buyersNumbers.len-1:
-        for k in gainsPerBuyer[buyerId].keys():
-            allKeys.incl(k)
 
     # Find max value
+    var seen = initTable[string, bool]()
     var maxKey: string
     var maxValue = -1
-    for key in allKeys:
-        var currentValue = 0
-        for gains in gainsPerBuyer:
-            if key in gains:
-                currentValue += gains[key]
-        # echo "key: ", key, " has currentValue: ", currentValue
-        if currentValue > maxValue:
-            echo "new best:", maxValue
-            maxValue = currentValue
-            maxKey = key
+    for buyerId in 0..buyersNumbers.len-1:
+        for key in gainsPerBuyer[buyerId].keys:
+            if key in seen:
+                continue
+            seen[key] = true
+
+            var currentValue = 0
+            for gains in gainsPerBuyer:
+                if key in gains:
+                    currentValue += gains[key]
+            if currentValue > maxValue:
+                # echo "new best:", currentValue
+                maxValue = currentValue
+                maxKey = key
                 
-    echo "best sequence: ", maxKey, " with value ", maxValue
-    # 1999, 2035 too low
+    # echo "best sequence: ", maxKey, " with value ", maxValue
     return maxValue
 
 proc main() =
@@ -129,7 +125,5 @@ proc main() =
     let part2Result = part2(data)
     doAssert part2Result == 2058
 
-main()
-
-#timeIt "day22":
-#    main()
+timeIt "day22":
+    main()

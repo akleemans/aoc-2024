@@ -38,7 +38,7 @@ Libraries:
 | Day 19 | 69.8ms |
 | Day 20 |        |
 | Day 21 |        |
-| Day 22 |        |
+| Day 22 | 4.2s   |
 | Day 23 |        |
 | Day 24 |        |
 | Day 25 |        |
