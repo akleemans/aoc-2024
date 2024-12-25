@@ -1,4 +1,4 @@
-# aoc-2024
+~~# aoc-2024
 
 My solutions for [Advent of Code 2024](https://adventofcode.com/2024).
 
@@ -41,7 +41,10 @@ Libraries:
 | Day 22 | 4.2s   |
 | Day 23 |        |
 | Day 24 |        |
-| Day 25 |        |
+| Day 25 | 2ms    |
+
+Ranking for all 50 stars: 2863rd place
+(Almost the same as last year!)
 
 ## Notes
 
@@ -128,6 +131,8 @@ today. Having a puzzle thrown at you which is so unclear was unexpected in AoC a
 Christmas tree appear in the Console (after only considering solutions with enough neighbouring robots) was really
 satisfying.
 
+![Christmas tree](day14_tree.png)
+
 ### Day 15
 
 Part 1 was okay, but after reading part 2 I wasn't motivated at all to solve it. The problem felt really tedious,
@@ -195,3 +200,78 @@ expected. It reminded me a bit of [2023 Day 13](https://adventofcode.com/2023/da
 
 For Part 2, switching the cache from bool ("have we seen this yet?") to a sum ("how many combinations are possible until
 here?") was enough.
+
+### Day 21
+
+Wow, this one was... hard. And tedious to implement - I quickly started hardcoding paths for both keypads, only to later
+realize that the **shortest** path should be found. After playing around with it for a bit I realized that some paths
+were just better than others in general, not specific to a certain situation.
+
+```
+# Numeric keypad
+# +---+---+---+
+# | 7 | 8 | 9 |
+# +---+---+---+
+# | 4 | 5 | 6 |
+# +---+---+---+
+# | 1 | 2 | 3 |
+# +---+---+---+
+#     | 0 | A |
+#     +---+---+
+
+# Direction keypad
+#     +---+---+
+#     | ^ | A |
+# +---+---+---+
+# | < | v | > |
+# +---+---+---+
+```
+
+For example, when going from `A` to `0` on the numeric keypad, `<^A` would be better than `^<A` to type, because on the
+next robot level, `^` and `A` are already near each other, so faster to reach.
+
+After hardcoding the (what I thought) best single possible step for part 1, I started re-doing it for part 2, to have
+all the
+
+### Day 23
+
+Not that of a difficult problem per se, but I struggled a lot with Nim when trying to use `HashSet` with a custom
+object. Even after implementing `<` and `==` (which turned out to be needed) it still wasn't working as I expected, so I
+switched
+
+In part 2 I learned about
+the [maximal clique problem](https://en.wikipedia.org/wiki/Clique_problem#Finding_a_single_maximal_clique), and read on
+Wikipedia that a greedy approach would do, which really surprised me! Iterating over all nodes and iteratively adding
+neighbors as long as all are connected turns out to be enough:
+
+```python
+for node in nodes:
+    all_connected = []
+    for neighbor in node.neighbors:
+        if still_connected(all_connected. meighbor):
+            all_connected.append(neighbor)
+```
+
+### Day 24
+
+Part 1 was easy with iterating over rules, and I solved it quickly.
+
+Part 2 was not what I expected - when reading it, I had absolutely no idea on how to solve it. After generating a graph
+and looking a bit through the connections, which were looking like this:
+
+![Graphical solving](day24_graph.png)
+
+I noticed some oddities at `z39` (for my input), which was not the result of
+`XOR` operations. Also `z10` and `z17` were odd (directly connected by `x`/`y`-inputs).
+
+After reading a bit on the AoC Subreddit I
+found [this very helpful thread](https://www.reddit.com/r/adventofcode/comments/1hla5ql/2024_day_24_part_2_a_guide_on_the_idea_behind_the/)
+which outlines some techniques to verify the proper wiring.
+
+After implementing the rules I was able to get the right result, and that was it. I initially thought I had to provide
+which exact swaps to make, but it was enough to provide the "faulty" outputs.
+
+### Day 25
+
+An easy puzzle to finish - I just struggled with parsing the input and had some off-by-one errors. After fixing that, it
+worked out immediately. What a nice Story finish, I really liked it!
