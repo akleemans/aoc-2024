@@ -40,7 +40,7 @@ Libraries:
 | Day 21 |        |
 | Day 22 | 4.2s   |
 | Day 23 |        |
-| Day 24 |        |
+| Day 24 | 0.59ms |
 | Day 25 | 0.43ms |
 
 Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
