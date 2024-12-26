@@ -30,7 +30,7 @@ Libraries:
 | Day 11 | 7μs    |
 | Day 12 | 27.4ms |
 | Day 13 | 1.07s  |
-| Day 14 | 28s    |
+| Day 14 | 141ms  |
 | Day 15 | 587μs  |
 | Day 16 | 78.7ms |
 | Day 17 | 1.5ms  |

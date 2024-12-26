@@ -87,8 +87,7 @@ proc part2(data: seq[string], w: int, h: int): int =
     var second = 0
     while true:
         second += 1
-        #if second mod 100 == 0:
-        #    echo "second: ", second
+        var posTable = initTable[(int, int), bool]()
         # Update positions
         for i in 0..positions.len-1:
             let p = positions[i]
@@ -100,18 +99,20 @@ proc part2(data: seq[string], w: int, h: int): int =
             if col < 0:
                 col += h
             positions[i] = (row, col)
+            posTable[(row, col)] = true
 
+        # Check a subset of points to see if they form a line
         var neighborCount = 0
-        for pos in positions:
+        for pos in positions[0..10]:
             var currentPos = pos
             # Assumme multiple connected cells
             for i in 0..6:
                 currentPos = currentPos + (0, 1)
-                if currentPos notin positions:
+                if currentPos notin posTable:
                     break
-            if currentPos in positions:
+            if currentPos in posTable:
                 # echo "neighborCount: ", neighborCount, ", seconds: ", second
-                printField(positions, w, h)
+                # printField(positions, w, h)
                 return second
         
 
@@ -126,7 +127,5 @@ proc main() =
     let part2Result = part2(data, 101, 103)
     doAssert part2Result == 7383
 
-main()
-
-#timeIt "day14":
-#    main()
+timeIt "day14":
+    main()
