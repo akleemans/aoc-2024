@@ -39,7 +39,7 @@ Libraries:
 | Day 20 |        |
 | Day 21 |        |
 | Day 22 | 4.2s   |
-| Day 23 |        |
+| Day 23 | 9.8ms  |
 | Day 24 | 0.59ms |
 | Day 25 | 0.43ms |
 
@@ -237,7 +237,7 @@ all the
 
 Not that of a difficult problem per se, but I struggled a lot with Nim when trying to use `HashSet` with a custom
 object. Even after implementing `<` and `==` (which turned out to be needed) it still wasn't working as I expected, so I
-switched
+switched to simple a `Table`, which would also provide an efficient lookup.
 
 In part 2 I learned about
 the [maximal clique problem](https://en.wikipedia.org/wiki/Clique_problem#Finding_a_single_maximal_clique), and read on
