@@ -41,10 +41,10 @@ Libraries:
 | Day 22 | 4.2s   |
 | Day 23 |        |
 | Day 24 |        |
-| Day 25 | 2ms    |
+| Day 25 | 0.43ms |
 
-Ranking for all 50 stars: 2863rd place
-(Almost the same as last year!)
+Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
+Total runtime (for all 25 days): TODO
 
 ## Notes
 
@@ -261,8 +261,8 @@ and looking a bit through the connections, which were looking like this:
 
 ![Graphical solving](day24_graph.png)
 
-I noticed some oddities at `z39` (for my input), which was not the result of
-`XOR` operations. Also `z10` and `z17` were odd (directly connected by `x`/`y`-inputs).
+I noticed some oddities at `z39` (for my input), which was not the result of `XOR` operations. Also `z10` and `z17` were
+odd (directly connected by `x`/`y`-inputs).
 
 After reading a bit on the AoC Subreddit I
 found [this very helpful thread](https://www.reddit.com/r/adventofcode/comments/1hla5ql/2024_day_24_part_2_a_guide_on_the_idea_behind_the/)
