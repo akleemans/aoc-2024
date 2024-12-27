@@ -80,14 +80,14 @@ proc main() =
     var data = strip(readFile("../inputs/day19.txt")).splitLines()
 
     let part1TestResult = part1(testData)
-    assert part1TestResult == 6
+    doAssert part1TestResult == 6
     let part1Result = part1(data)
-    assert part1Result == 336
+    doAssert part1Result == 336
 
     let part2TestResult = part2(testData)
-    assert part2TestResult == 16
+    doAssert part2TestResult == 16
     let part2Result = part2(data)
-    assert part2Result == 758890600222015
+    doAssert part2Result == 758890600222015
 
 timeIt "day19":
     main()
