@@ -232,7 +232,32 @@ For example, when going from `A` to `0` on the numeric keypad, `<^A` would be be
 next robot level, `^` and `A` are already near each other, so faster to reach.
 
 After hardcoding the (what I thought) best single possible step for part 1, I started re-doing it for part 2, to have
-all the
+all the possible paths and check which one was fastest. I had to go over it again as I was first ignoring the "gaps" in
+the keyboards. With memoization this was also quick to solve.
+
+### Day 22
+
+Part 1 was fun and easy to implement:
+
+```nim
+# Step 1
+var res = secret * 64
+secret = prune(mix(secret, res))
+
+# Step 2
+res = roundDown(secret / 32)
+secret = prune(mix(secret, res))
+
+# Step 3
+res = secret * 2048
+secret = prune(mix(secret, res))
+```
+
+For part 2 I first struggled a bit understanding the problem, and later struggled a lot with the (only slightly!)
+changed example data, which gave a slightly different result.
+
+To solve it, I collected all differences and just went through them for each buyer to search for the biggest gain.
+It's one of the slower days (above 4 seconds) and would be definitely possible to improve on.
 
 ### Day 23
 
