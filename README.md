@@ -44,6 +44,7 @@ Libraries:
 | Day 25 | 0.43ms  |
 
 Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
+
 Total runtime (for all 25 days): ~8.98s
 
 ## Notes
