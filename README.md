@@ -15,33 +15,33 @@ Libraries:
 
 * `bigints`: `nimble install https://github.com/nim-lang/bigints`
 
-| Day    | Time    |
-|--------|---------|
-| Day 1  | 0.68ms  |
-| Day 2  | 1.98ms  |
-| Day 3  | 2.24ms  |
-| Day 4  | 0.27ms  |
-| Day 5  | 22.5ms  |
-| Day 6  | 350ms   |
-| Day 7  | 2.87ms  |
-| Day 8  | 0.95ms  |
-| Day 9  | 169ms   |
-| Day 10 | 1.66ms  |
-| Day 11 | 0.007ms |
-| Day 12 | 27.4ms  |
-| Day 13 | 1070ms  |
-| Day 14 | 141ms   |
-| Day 15 | 0.58ms  |
-| Day 16 | 78.7ms  |
-| Day 17 | 1.5ms   |
-| Day 18 | 12.6ms  |
-| Day 19 | 69.8ms  |
-| Day 20 | 2595ms  |
-| Day 21 | 0.48ms  |
-| Day 22 | 4418ms  |
-| Day 23 | 9.8ms   |
-| Day 24 | 0.59ms  |
-| Day 25 | 0.43ms  |
+| Day    | Time (ms) |
+|--------|-----------|
+| Day 1  | 0.68      |
+| Day 2  | 1.98      |
+| Day 3  | 2.24      |
+| Day 4  | 0.27      |
+| Day 5  | 22.5      |
+| Day 6  | 350       |
+| Day 7  | 2.87      |
+| Day 8  | 0.95      |
+| Day 9  | 169       |
+| Day 10 | 1.66      |
+| Day 11 | 0.007     |
+| Day 12 | 27.4      |
+| Day 13 | 1070      |
+| Day 14 | 141       |
+| Day 15 | 0.58      |
+| Day 16 | 78.7      |
+| Day 17 | 1.5       |
+| Day 18 | 12.6      |
+| Day 19 | 69.8      |
+| Day 20 | 2595      |
+| Day 21 | 0.48      |
+| Day 22 | 1321      |
+| Day 23 | 9.8       |
+| Day 24 | 0.59      |
+| Day 25 | 0.43      |
 
 Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
 

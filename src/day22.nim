@@ -72,6 +72,9 @@ proc part2(data: seq[string]): int =
                 buyerChanges.add((oneDigitChange, newPrice))
         iterationDifferences.add(buyerChanges)
     
+    var allDiffs = initTable[string, int]()
+    var topDiffs: seq[string] = @[]
+    var prizeThreshold = toInt(float(buyersNumbers.len) * 0.9)
     var gainsPerBuyer: seq[Table[string, int]] = @[]
     for buyerId in 0..buyersNumbers.len-1:
         # echo "checking buyer ", buyerId
@@ -87,27 +90,23 @@ proc part2(data: seq[string]): int =
             let diffString = diffs.mapIt($it).join(",")
             if diffString notin gain:
                 gain[diffString] = prize
+                allDiffs[diffString] = allDiffs.getOrDefault(diffString) + prize
+                if allDiffs[diffString] > prizeThreshold:
+                    topDiffs.add(diffString)
         gainsPerBuyer.add(gain)
 
-
     # Find max value
-    var seen = initTable[string, bool]()
     var maxKey: string
     var maxValue = -1
-    for buyerId in 0..buyersNumbers.len-1:
-        for key in gainsPerBuyer[buyerId].keys:
-            if key in seen:
-                continue
-            seen[key] = true
-
-            var currentValue = 0
-            for gains in gainsPerBuyer:
-                if key in gains:
-                    currentValue += gains[key]
-            if currentValue > maxValue:
-                # echo "new best:", currentValue
-                maxValue = currentValue
-                maxKey = key
+    for key in topDiffs:
+        var currentValue = 0
+        for gains in gainsPerBuyer:
+            if key in gains:
+                currentValue += gains[key]
+        if currentValue > maxValue:
+            # echo "new best:", currentValue
+            maxValue = currentValue
+            maxKey = key
                 
     # echo "best sequence: ", maxKey, " with value ", maxValue
     return maxValue
