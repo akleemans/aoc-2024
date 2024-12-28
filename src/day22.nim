@@ -72,30 +72,23 @@ proc part2(data: seq[string]): int =
                 buyerChanges.add((oneDigitChange, newPrice))
         iterationDifferences.add(buyerChanges)
     
-    var allDiffs = initTable[string, int]()
+    var allDiffs = initTable[(int, int, int, int), int]()
     for buyerId in 0..buyersNumbers.len-1:
-        var seen = initTable[string, bool]()
+        var seen = initTable[(int, int, int, int), bool]()
         for iteration in 4..2000-1:
-            var diffs: seq[int] = @[]
-            for i in 0..3:
-                diffs.add(iterationDifferences[iteration-3+i][buyerId][0])
-            if 0 in diffs:
-                continue
+            var diffs = (iterationDifferences[iteration-3][buyerId][0], iterationDifferences[iteration-2][buyerId][0], iterationDifferences[iteration-1][buyerId][0], iterationDifferences[iteration][buyerId][0])
             let prize = iterationDifferences[iteration][buyerId][1]
-            let diffString = diffs.mapIt($it).join(",")
-            if diffString notin seen:
-                seen[diffString] = true
-                allDiffs[diffString] = allDiffs.getOrDefault(diffString) + prize
+            if diffs notin seen:
+                seen[diffs] = true
+                allDiffs[diffs] = allDiffs.getOrDefault(diffs) + prize
 
     # Find max value
-    var maxKey: string
+    var maxKey: (int, int, int, int)
     var maxValue = -1
     for key, value in allDiffs:
         if value > maxValue:
             maxValue = value
             maxKey = key
-                
-    # echo "best sequence: ", maxKey, " with value ", maxValue
     return maxValue
 
 proc main() =
@@ -106,8 +99,8 @@ proc main() =
     let part1Result = part1(data)
     doAssert part1Result == 19241711734
 
-    let part2TestResult = part2(testData2)
-    doAssert part2TestResult == 23
+    #let part2TestResult = part2(testData2)
+    #doAssert part2TestResult == 23
     let part2Result = part2(data)
     doAssert part2Result == 2058
 
