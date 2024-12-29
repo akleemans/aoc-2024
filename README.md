@@ -202,6 +202,23 @@ expected. It reminded me a bit of [2023 Day 13](https://adventofcode.com/2023/da
 For Part 2, switching the cache from bool ("have we seen this yet?") to a sum ("how many combinations are possible until
 here?") was enough.
 
+### Day 20
+
+Today a BFS for shortest path with an interesting twist, to "cheat" and take a shortcut. For part 1 I just checked if I
+could break through the wall, which would allow for a shortcut.
+
+For part 2 I couldn't wrap my head around a proper solution. I started thinking about a second BFS starting at each
+position of the path, but wasn't sure if taking a shortcut and _then_ walking a bit along the path would all count as
+shortcuts.
+
+After seeing this reddit post I had an idea on how to solve it:
+
+![Finding cheats](day20.gif)
+_Credit: [EverybodyCodes](https://www.reddit.com/r/adventofcode/comments/1hih83h/2024_day_20_part_2_all_valid_shortcuts_from_red/)_
+
+On my first try I kept the paths when finding the shortest path, which was kind of expensive.
+I later refactored and worked a bit on a proper Dijkstra, which improved runtime quite a bit.
+
 ### Day 21
 
 Wow, this one was... hard. And tedious to implement - I quickly started hardcoding paths for both keypads, only to later
