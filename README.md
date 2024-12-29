@@ -47,6 +47,11 @@ Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
 
 Total runtime (for all 25 days): ~2.7s
 
+Improvement ideas:
+* Day 13 (sympy or simplify)
+* Day 17 (bigints, or pow with modulo?)
+* Day 6, 9, 14, 20, 22 (runtime)
+
 ## Notes
 
 ### Day 6

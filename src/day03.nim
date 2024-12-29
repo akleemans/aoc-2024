@@ -3,8 +3,8 @@ import strutils
 import sequtils
 import benchy
 
-let test_data = """xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))""".splitLines()
-let test_data2 = """xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))""".splitLines()
+let testData = """xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))""".splitLines()
+let testData2 = """xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))""".splitLines()
 
 
 proc part1(data: seq[string]): int =
@@ -52,15 +52,15 @@ proc part2(data: seq[string]): int =
 proc main() =
     var data = strip(readFile("../inputs/day03.txt")).splitLines()
 
-    let part1_test_result = part1(test_data)
-    doAssert part1_test_result == 161
-    let part1_result = part1(data)
-    doAssert part1_result == 167650499
+    let part1TestResult = part1(testData)
+    doAssert part1TestResult == 161
+    let part1Result = part1(data)
+    doAssert part1Result == 167650499
 
-    let part2_test_result = part2(test_data2)
-    doAssert part2_test_result == 48
-    let part2_result = part2(data)
-    doAssert part2_result == 95846796
+    let part2TestResult = part2(testData2)
+    doAssert part2TestResult == 48
+    let part2Result = part2(data)
+    doAssert part2Result == 95846796
 
 timeIt "day03":
     main()

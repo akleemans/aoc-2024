@@ -2,7 +2,7 @@ import math
 import strutils
 import benchy
 
-let test_data = """MMMSXXMASM
+let testData = """MMMSXXMASM
 MSAMXMSMSA
 AMXSXMAAMM
 MSAMASMSMX
@@ -56,15 +56,15 @@ proc part2(data: seq[string]): int =
 proc main() =
     var data = strip(readFile("../inputs/day04.txt")).splitLines()
 
-    let part1_test_result = part1(test_data)
-    doAssert part1_test_result == 18
-    let part1_result = part1(data)
-    doAssert part1_result == 2504
+    let part1TestResult = part1(testData)
+    doAssert part1TestResult == 18
+    let part1Result = part1(data)
+    doAssert part1Result == 2504
 
-    let part2_test_result = part2(test_data)
-    doAssert part2_test_result == 9
-    let part2_result = part2(data)
-    doAssert part2_result == 1923
+    let part2TestResult = part2(testData)
+    doAssert part2TestResult == 9
+    let part2Result = part2(data)
+    doAssert part2Result == 1923
 
 timeIt "day04":
   main()

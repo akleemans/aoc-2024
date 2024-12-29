@@ -4,7 +4,7 @@ import algorithm
 import sequtils
 import benchy
 
-let test_data = """3   4
+let testData = """3   4
 4   3
 2   5
 1   3
@@ -44,15 +44,15 @@ proc part2(data: seq[string]): int =
 proc main() =
     var data = strip(readFile("../inputs/day01.txt")).splitLines()
 
-    let part1_test_result = part1(test_data)
-    doAssert part1_test_result == 11
-    let part1_result = part1(data)
-    doAssert part1_result == 1388114
+    let part1RestResult = part1(testData)
+    doAssert part1RestResult == 11
+    let part1Result = part1(data)
+    doAssert part1Result == 1388114
 
-    let part2_test_result = part2(test_data)
-    doAssert part2_test_result == 31
-    let part2_result = part2(data)
-    doAssert part2_result == 23529853
+    let part2TestResult = part2(testData)
+    doAssert part2TestResult == 31
+    let part2Result = part2(data)
+    doAssert part2Result == 23529853
 
 timeIt "day02":
     main()

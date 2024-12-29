@@ -3,14 +3,14 @@ import strutils
 import sequtils
 import benchy
 
-let test_data = """7 6 4 2 1
+let testData = """7 6 4 2 1
 1 2 7 8 9
 9 7 6 2 1
 1 3 2 4 5
 8 6 4 4 1
 1 3 6 7 9""".splitLines()
 
-proc is_save(nrs: seq[string]): bool =
+proc isSave(nrs: seq[string]): bool =
     var diffs: seq[int] = @[]
     for i in 1 .. nrs.len - 1:
         diffs.add(parseInt(nrs[i]) - parseInt(nrs[i - 1]))
@@ -19,7 +19,7 @@ proc is_save(nrs: seq[string]): bool =
 proc part1(data: seq[string]): int =
     var count = 0
     for line in data:
-        if is_save(line.split()):
+        if isSave(line.split()):
             count += 1
     return count
 
@@ -27,7 +27,7 @@ proc part2(data: seq[string]): int =
     var count = 0
     var second_try: seq[string] = @[]
     for line in data:
-        if is_save(line.split()):
+        if isSave(line.split()):
             count += 1
         else:
             second_try.add(line)
@@ -46,15 +46,15 @@ proc part2(data: seq[string]): int =
 proc main() =
     var data = strip(readFile("../inputs/day02.txt")).splitLines()
 
-    let part1_test_result = part1(test_data)
-    doAssert part1_test_result == 2
-    let part1_result = part1(data)
-    doAssert part1_result == 421
+    let part1TestResult = part1(testData)
+    doAssert part1TestResult == 2
+    let part1Result = part1(data)
+    doAssert part1Result == 421
 
-    let part2_test_result = part2(test_data)
-    doAssert part2_test_result == 4
-    let part2_result = part2(data)
-    doAssert part2_result == 476
+    let part2TestResult = part2(testData)
+    doAssert part2TestResult == 4
+    let part2Result = part2(data)
+    doAssert part2Result == 476
 
 
 timeIt "day02":
