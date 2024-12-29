@@ -86,7 +86,7 @@ proc part1(data: seq[string], minTimeSave: int): int =
             break
 
         # If there's a quicker way until here: abort, this can't be a solution
-        if pos in seen and seen[pos] < score:
+        if pos in seen:
             continue
         seen[pos] = score
         
@@ -94,10 +94,7 @@ proc part1(data: seq[string], minTimeSave: int): int =
         for dir in allDirs:
             var path = currentPath.path
             var nextPos = pos + dir
-            if grid[nextPos[0]][nextPos[1]] != '#':
-
-                # TODO only add if not in seen
-
+            if grid[nextPos[0]][nextPos[1]] != '#' and nextPos notin seen:
                 path.add((nextPos, score))
                 queue.push(Path(score: score, pos: nextPos, path: path))
     # echo "found best solution with length ", solution[^1][1]
@@ -154,7 +151,7 @@ proc part2(data: seq[string], minTimeSave: int): int =
             break
 
         # If there's a quicker way until here: abort, this can't be a solution
-        if pos in seen and seen[pos] < score:
+        if pos in seen:
             continue
         seen[pos] = score
         
@@ -162,7 +159,7 @@ proc part2(data: seq[string], minTimeSave: int): int =
         for dir in allDirs:
             var path = currentPath.path
             var nextPos = pos + dir
-            if grid[nextPos[0]][nextPos[1]] != '#':
+            if grid[nextPos[0]][nextPos[1]] != '#' and nextPos notin seen:
                 path.add((nextPos, score))
                 queue.push(Path(score: score, pos: nextPos, path: path))
     # echo "found best solution with length ", solution[^1][1]
