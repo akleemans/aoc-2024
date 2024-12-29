@@ -11,9 +11,11 @@ Code in Nim 2.2.0.
 * Testing, debugging: `nim compile --run day00.nim`
 * Timing: `nim compile -d:release -d:danger day00.nim`
 
-Libraries:
+Libraries used:
 
-* `bigints`: `nimble install https://github.com/nim-lang/bigints`
+* `benchy` (timing): `nimble install benchy`
+* `bigints` (big integers): `nimble install https://github.com/nim-lang/bigints`
+* `manu` (solving matrices):
 
 | Day    | Time (ms) |
 |--------|-----------|
@@ -29,7 +31,7 @@ Libraries:
 | Day 10 | 1.66      |
 | Day 11 | 0.007     |
 | Day 12 | 27.4      |
-| Day 13 | 1070      |
+| Day 13 | 0.87      |
 | Day 14 | 141       |
 | Day 15 | 0.58      |
 | Day 16 | 78.7      |
@@ -45,10 +47,10 @@ Libraries:
 
 Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
 
-Total runtime (for all 25 days): ~2.7s
+Total runtime (for all 25 days): ~1.65s
 
 Improvement ideas:
-* Day 13 (sympy or simplify)
+
 * Day 17 (bigints, or pow with modulo?)
 * Day 6, 9, 14, 20, 22 (runtime)
 
@@ -129,6 +131,10 @@ Cheat day! Today when reading the problem my mind immediately jumped to equation
 Python/[SymPy](https://www.sympy.org/en/index.html), ignoring the "cheapest" condition. The first solution for each
 equation was already the right one, and I only found out afterwards that all "vectors" were linearly independent, so I
 got lucky.
+
+Re-implemented this later in Nim with the [`manu` package](https://planetis-m.github.io/manu/) to solve it
+as a linear equation system as matrix, to also have it in Nim (and speed it up a bit, from around a second to below a
+millisecond).
 
 ### Day 14
 
