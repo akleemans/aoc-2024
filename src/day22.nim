@@ -52,35 +52,33 @@ proc part1(data: seq[string]): int =
 
 proc part2(data: seq[string]): int =
     var buyersNumbers = data.mapIt(parseInt(it))
-    var iterationDifferences: seq[seq[(int, int)]] = @[]
-    for iteration in 0..2000-1:
+    var allDiffs = initTable[(int, int, int, int), int]()
+
+    for buyerId in 0..buyersNumbers.len-1:
         var buyerChanges: seq[(int, int)] = @[]
-        for i in 0..buyersNumbers.len-1:
-            let secret = buyersNumbers[i]
+        var buyerDiffs = initTable[(int, int, int, int), bool]()
+        for iteration in 0..2000-1:
+            let secret = buyersNumbers[buyerId]
             var res = secret * 64
             var newSecret = prune(mix(secret, res))
             res = roundDown(newSecret / 32)
             newSecret = prune(mix(newSecret, res))
             res = newSecret * 2048
             newSecret = prune(mix(newSecret, res))
-            buyersNumbers[i] = newSecret
+            buyersNumbers[buyerId] = newSecret
 
             if iteration > 0:
                 let lastPrice = secret mod 10
                 let newPrice = newSecret mod 10
                 let oneDigitChange = newPrice - lastPrice
                 buyerChanges.add((oneDigitChange, newPrice))
-        iterationDifferences.add(buyerChanges)
-    
-    var allDiffs = initTable[(int, int, int, int), int]()
-    for buyerId in 0..buyersNumbers.len-1:
-        var seen = initTable[(int, int, int, int), bool]()
-        for iteration in 4..2000-1:
-            var diffs = (iterationDifferences[iteration-3][buyerId][0], iterationDifferences[iteration-2][buyerId][0], iterationDifferences[iteration-1][buyerId][0], iterationDifferences[iteration][buyerId][0])
-            let prize = iterationDifferences[iteration][buyerId][1]
-            if diffs notin seen:
-                seen[diffs] = true
-                allDiffs[diffs] = allDiffs.getOrDefault(diffs) + prize
+
+            if iteration >= 4:
+                var diffs = (buyerChanges[iteration-4][0], buyerChanges[iteration-3][0], buyerChanges[iteration-2][0], buyerChanges[iteration-1][0])
+                let prize = buyerChanges[iteration-1][1]
+                if diffs notin buyerDiffs:
+                    buyerDiffs[diffs] = true
+                    allDiffs[diffs] = allDiffs.getOrDefault(diffs) + prize
 
     # Find max value
     var maxKey: (int, int, int, int)

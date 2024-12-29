@@ -40,14 +40,14 @@ Libraries used:
 | Day 19 | 69.8      |
 | Day 20 | 138       |
 | Day 21 | 0.48      |
-| Day 22 | 621       |
+| Day 22 | 473       |
 | Day 23 | 9.8       |
 | Day 24 | 0.59      |
 | Day 25 | 0.43      |
 
 Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
 
-Total runtime (for all 25 days): ~1.65s
+Total runtime (for all 25 days): ~1.5s
 
 Improvement ideas:
 
