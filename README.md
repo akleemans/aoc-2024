@@ -36,7 +36,7 @@ Libraries:
 | Day 17 | 1.5       |
 | Day 18 | 12.6      |
 | Day 19 | 69.8      |
-| Day 20 | 1027      |
+| Day 20 | 138       |
 | Day 21 | 0.48      |
 | Day 22 | 621       |
 | Day 23 | 9.8       |
@@ -45,7 +45,7 @@ Libraries:
 
 Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
 
-Total runtime (for all 25 days): TODO
+Total runtime (for all 25 days): ~2.7s
 
 ## Notes
 

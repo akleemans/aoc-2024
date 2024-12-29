@@ -156,23 +156,30 @@ proc part2(data: seq[string], minTimeSave: int): int =
     for pos in solution:
         pathScoreTable[pos] = count
         count += 1
+    
+    # Find valid diffs
+    var validDiffs: seq[(int, int)] = @[]
+    for rowDiff in 0..41:
+        for colDiff in 0..41:
+            let diff = (rowDiff-20, colDiff-20)
+            if dist(diff) <= 20:
+                validDiffs.add(diff)
 
+    # Find valid cheats
     var cheatCount = 0
     for pos in solution:
         let score = pathScoreTable[pos]
-        let leftUpperCorner = pos - (20, 20)
-        for rowDiff in 0..41:
-            for colDiff in 0..41:
-                let newPos = leftUpperCorner + (rowDiff, colDiff)
-                if newPos == pos or not inBounds(newPos, w, h):
-                    continue
-                #echo "...checking ", newPos
-                let distFromPos = newPos - pos
-                if dist(distFromPos) <= 20 and newPos in pathScoreTable:
-                    let scoreDiff = pathScoreTable[newPos] - score - dist(distFromPos)
-                    if scoreDiff >= minTimeSave:
-                        # echo "found cheat of ", scoreDiff, " from ", score, " to ", pathScoreTable[newPos], " newPos: ", newPos
-                        cheatCount += 1
+        for diff in validDiffs:
+            let newPos = pos + diff
+            if not inBounds(newPos, w, h):
+                continue
+            #echo "...checking ", newPos
+            if newPos in pathScoreTable:
+                let distFromPos = dist(diff)
+                let scoreDiff = pathScoreTable[newPos] - score - distFromPos
+                if scoreDiff >= minTimeSave:
+                    # echo "found cheat of ", scoreDiff, " from ", score, " to ", pathScoreTable[newPos], " newPos: ", newPos
+                    cheatCount += 1
 
     # echo "cheatCount: ", cheatCount
     return cheatCount
