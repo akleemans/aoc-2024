@@ -24,7 +24,7 @@ Libraries used:
 | Day 3  | 2.24      |
 | Day 4  | 0.27      |
 | Day 5  | 22.5      |
-| Day 6  | 350       |
+| Day 6  | 346       |
 | Day 7  | 2.87      |
 | Day 8  | 0.95      |
 | Day 9  | 169       |
@@ -47,12 +47,7 @@ Libraries used:
 
 Ranking for all 50 stars: 2863rd place (Almost the same as last year!)
 
-Total runtime (for all 25 days): TODO
-
-Improvement ideas:
-
-* Day 17 (bigints, or pow with modulo?)
-* Day 6, 9, 14, 20, 22 (runtime)
+Total runtime (for all 25 days): 1420ms
 
 ## Notes
 

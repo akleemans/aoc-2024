@@ -41,7 +41,7 @@ proc part1(data: seq[string]): int =
             if data[row][col] == '^':
                 startPos = (row, col)
 
-    var visited: seq[(int, int)] = @[startPos]
+    var visited = initTable[(int, int), bool]()
     var currentDir = (-1, 0) # starting upwards
     var currentPos = startPos
     while true:
@@ -59,7 +59,7 @@ proc part1(data: seq[string]): int =
 
         # Add to visited
         if currentPos notin visited:
-            visited.add(currentPos)
+             visited[currentPos] = true
 
     # echo "visited: ", visited.len
     return visited.len
@@ -73,7 +73,7 @@ proc part2(data: seq[string]): int =
             if data[row][col] == '^':
                 startPos = (row, col)
 
-    var visited: seq[(int, int)] = @[startPos]
+    var visited = initTable[(int, int), bool]()
     var currentDir = (-1, 0) # starting upwards
     var currentPos = startPos
     while true:
@@ -91,10 +91,10 @@ proc part2(data: seq[string]): int =
 
         # Add to visited
         if currentPos notin visited:
-            visited.add(currentPos)
+            visited[currentPos] = true
 
     var count = 0
-    for blockerPos in visited:
+    for blockerPos in visited.keys:
         var visited2 = initTable[((int, int), (int, int)), bool]()
         currentDir = (-1, 0) # starting upwards
         currentPos = startPos
