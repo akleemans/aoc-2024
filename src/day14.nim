@@ -84,37 +84,30 @@ proc part2(data: seq[string], w: int, h: int): int =
         positions.add((pr, pc))
         velocities.add((vr, vc))
 
-    var second = 0
+    # Start by going back
+    var second = w * h
     while true:
-        second += 1
+        second -= 1
         var posTable = initTable[(int, int), bool]()
+
         # Update positions
         for i in 0..positions.len-1:
             let p = positions[i]
             let v = velocities[i]
-            var row = (p[0] + v[0]) mod w
-            var col = (p[1] + v[1]) mod h
+            var row = (p[0] + v[0] * second) mod w
+            var col = (p[1] + v[1] * second) mod h
             if row < 0:
                 row += w
             if col < 0:
                 col += h
-            positions[i] = (row, col)
-            posTable[(row, col)] = true
+            let currentPos = (row, col)
+            posTable[currentPos] = true
 
-        # Check a subset of points to see if they form a line
-        var neighborCount = 0
-        for pos in positions[0..10]:
-            var currentPos = pos
-            # Assumme multiple connected cells
-            for i in 0..6:
-                currentPos = currentPos + (0, 1)
-                if currentPos notin posTable:
-                    break
-            if currentPos in posTable:
-                # echo "neighborCount: ", neighborCount, ", seconds: ", second
+            # Check a subset of points to see if they form a line
+            if i > positions.len-30 and currentPos + (0, 1) in posTable and currentPos + (0, 2) in posTable and currentPos + (0, 3) in posTable and currentPos + (0, 4) in posTable and currentPos + (0, 5) in posTable and currentPos + (0, 6) in posTable:
+                # Printing the field reveals the christmas tree
                 # printField(positions, w, h)
                 return second
-        
 
 proc main() =
     var data = strip(readFile("../inputs/day14.txt")).splitLines()
